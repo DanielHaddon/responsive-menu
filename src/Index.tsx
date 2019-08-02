@@ -1,23 +1,26 @@
-import "./styles.scss";
+import "./Index.scss";
 
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent } from "react";
 import ReactDOM from "react-dom";
-import Navigator, { INavButton } from "./Navigator";
+import Navigator, { INavButton } from "./Navigator/Navigator";
 
-import SvgCalendar from "./svg/SvgCalendar";
-import SvgMap from "./svg/SvgMap";
-import SvgInfo from "./svg/SvgInfo";
-import SvgImages from "./svg/SvgImages";
-import SvgTicket from "./svg/SvgTicket";
-import SvgDiscount from "./svg/SvgDiscount";
-import SvgOrganisation from "./svg/SvgOrganisation";
+import SvgCalendar from "./Icons/SvgCalendar";
+import SvgMap from "./Icons/SvgMap";
+import SvgInfo from "./Icons/SvgInfo";
+import SvgImages from "./Icons/SvgImages";
+import SvgTicket from "./Icons/SvgTicket";
+import SvgDiscount from "./Icons/SvgDiscount";
+import SvgOrganisation from "./Icons/SvgOrganisation";
+import Organisation from "./Editor/Organisation";
 
 const navButtons: Array<INavButton> = [];
 navButtons.push({
   icon: <SvgOrganisation />,
   text: "Organisation",
-  subText: "JCB Ltd"
+  subText: "JCB Ltd",
+  component: <Organisation />
 });
+
 navButtons.push({ icon: <SvgCalendar />, text: "Orders" });
 navButtons.push({ icon: <SvgMap />, text: "Rectification" });
 navButtons.push({ icon: <SvgInfo />, text: "Reports" });

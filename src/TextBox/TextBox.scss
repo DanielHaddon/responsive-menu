@@ -1,0 +1,66 @@
+@import "../Styles.scss";
+
+.textbox {
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+  color: #42526e;
+  margin-bottom: 18px;
+
+  label.description {
+    padding-left: 8px;
+  }
+
+  $hoverBorderColor: rgb(50, 102, 151);
+
+  &.has-value, &.focused {
+    .input-container {
+      label {
+        top: 6px;
+        left: 6px;
+        font-size: 12px;
+        background: white;
+        color: #adadad;
+        padding: 0 9px;
+      }
+    }
+  }
+
+  &.focused .input-container label {
+    color: #42526e;
+  }
+
+  .input-container {
+    position: relative;
+    padding-top: 12px;
+
+    label {
+      color: #adadad;
+      position: absolute;
+      top: 24px;
+      left: 15px;
+      user-select: none;
+      pointer-events: none;
+      transition: .1s ease-out;
+    }
+
+    input {
+      width: 100%;
+      font-size: 16px;
+      padding: 11px 14px;
+      color: #43536f;
+      border: 1px solid #adadad;
+      border-radius: 4px;
+      transition: .2s ease-out;
+      max-width: 450px;
+
+      &:focus {
+        outline: none;
+        border-color: $hoverBorderColor;
+        box-shadow: inset 0px 0px 0px 1px $hoverBorderColor;        
+      }
+    }
+
+  }
+
+}

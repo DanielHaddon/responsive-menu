@@ -1,0 +1,139 @@
+@import "Styles.scss";
+
+.app {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+ul {
+  display: block;
+  list-style: none;
+  list-style-image: none;
+  padding: 0;
+  margin: 0;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,
+  Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  
+  svg {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    width: 38px; 
+    height: 38px;
+    fill: #42526e;
+  }
+}
+
+.split-6 {
+  width: 49.991%;
+  display: inline-block;
+  vertical-align: top;
+  
+  @media (max-width: $media-width) {
+    width: 100%;
+    display: block;     
+  }
+}
+
+section {
+  background: #fff;
+  min-height: 200px;
+  position: relative;
+  padding: 0 25px;
+
+  // &:after {
+  //   content: '';
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: 25px;
+  //   right: 25px;
+  //   background: #eaecf0;
+  //   border-radius: 4px;
+  //   height: 4px;
+  // }
+}
+
+.page {
+  @keyframes fade-page-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  animation: fade-page-in .3s ease-in forwards;
+}
+
+.toolbar {
+  padding: 0 25px;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+button {
+  padding: 11px 17px;
+  font-size: 14px;
+  display: inline-block;
+  margin: 0;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  background: white;
+  border: 0;
+  border: 2px solid #5d6e8c;
+  color: #5d6e8c;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.4px;
+  transition: .2s ease-out;
+  outline: none;
+
+  &:hover {
+    color: white;
+    background: #5d6e8c;
+  }
+
+  &:active {
+    outline: none;
+  }
+  
+  &:focus { 
+    box-shadow: inset 0px 0px 0px 1px #326697;
+  }
+
+  &.good {
+    color: #659a54;
+    border-color: #659a54;
+
+    &:hover {
+      color: white;
+      background: #659a54;
+    }
+    
+    &:active, &:focus {
+      box-shadow: inset 0px 0px 0px 1px #659a54;
+    }
+  }
+  
+  @media (max-width: 450px) {
+    margin: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}

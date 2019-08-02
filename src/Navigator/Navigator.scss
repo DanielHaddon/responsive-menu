@@ -1,0 +1,419 @@
+@import "../Styles.scss";
+
+.navigator {
+  @keyframes fade-page-in {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1; 
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  animation: fade-page-in .8s ease-out forwards;
+
+  nav.vertical {
+    $image-size: 23px;
+    $nav-width: 64px;
+  
+    $fill: #fff;
+    $background: rgb(50, 102, 151);
+  
+    $fill: #333;
+    $background: #ec9903;
+  
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: $nav-width;
+    background-color: $background;
+  
+    ul {
+      padding: 10px 0;
+      margin: 0;
+      position: relative;
+      width: 100%;
+  
+      &.bottom {
+        position: absolute;
+        bottom: 0;
+      }
+  
+      li {
+        display: block;
+        transition: .2s ease-out;
+        cursor: pointer;
+        background: transparent;
+        margin: 0 auto;
+        margin-bottom: 8px;
+        width: 42px;
+        height: 42px;
+        border-radius: 100%;
+        position: relative;
+  
+        &.brand {
+          width: 52px;
+          height: 52px;
+          margin-bottom: 24px;
+  
+          svg {
+            width: 32px;
+            height: 32px;
+          }
+        }
+  
+        label {
+          display: none;
+          cursor: pointer;
+  
+          &.sub-text {
+            font-size: 12px;
+            padding-top: 4px;
+            font-weight: 600;
+            opacity: 0.6;
+          }
+        }
+  
+        svg {
+          position: absolute;
+          width: $image-size;
+          height: $image-size;
+          fill: $fill;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  
+    &.main {
+
+      ul.routes {
+        li {          
+          @keyframes fade-in-button {
+            0% {
+              opacity: 0;
+              transform: scale(0.6);
+            }
+            100% {
+              opacity: 1;
+              transform: scale(1);
+            }
+          }
+  
+          @media (min-width: $media-width) {
+            animation: fade-in-button .2s ease-out forwards;      
+          }
+        }
+      }
+  
+      ul {
+        li {  
+          user-select: none;
+
+          svg {
+            z-index: 2;
+          }
+          
+          @keyframes fade-in-label {
+            0% {
+              opacity: 0;
+              transform: scale(0.6) translateY(-50%);
+            }
+            100% {
+              opacity: 1;
+              transform: scale(1) translateY(-50%);
+            }
+          }
+
+          label {
+            animation: fade-in-label .2s ease-out forwards;
+            user-select: none;
+            z-index: 1;
+            position: absolute;
+            left: 44px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #363356;
+            border-radius: 4px;
+            padding: 6px 10px;
+            color: white;
+            white-space: nowrap;
+            box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.4);            
+              
+            &.sub-text {
+              top: 125%;
+              opacity: 1;
+            }
+          }
+          
+          &:hover {
+            background: rgba(255, 255, 255, 0.12);
+            label {
+              display: block;
+  
+              &.sub-text {
+                display: none;
+              }
+            }
+          }
+          
+          &.brand {
+            label {
+              display: none;
+            }
+          }
+          
+          &.selected {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.12);
+  
+            svg {
+              fill: $fill;
+            }
+          }
+        }
+      }
+    }
+  
+    @keyframes slide-out-left {
+      0% {
+        left: $nav-width;
+      }
+      100% {
+        left: -200px;      
+      }
+    }
+  
+    @keyframes slide-in-left {
+      0% {
+        left: -200px;
+      }
+      100% {
+        left: $nav-width;
+      }
+    }
+  
+    &.sub {
+      width: 256px;
+      @media (max-width: $media-width) {
+        width: 100%; 
+      }
+      left: $nav-width;
+      background: #f4f5f7;
+      padding: 0 18px;
+      overflow: auto;
+      transition: .2s ease-out;
+        
+      ul {
+        padding: 20px 0;
+        max-width: 300px;
+        @media (max-width: $media-width) {
+          padding-top: 40px;
+        }
+  
+        li {
+          width: auto;
+          height: auto;
+          padding: 12px 16px;
+          border-radius: 4px;
+          text-align: left;
+          color: rgb(66, 82, 110);
+          padding-left: 58px;
+          background: transparent;
+  
+          label {
+            user-select: none;
+            display: block;
+          }
+  
+          svg {
+            transition: .2s ease-out;
+            position: absolute;
+            width: $image-size;
+            height: $image-size;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            fill: #42526e;
+          }
+  
+          &.selected {
+            color: rgb(0, 82, 204);
+  
+            svg {
+              fill: rgb(0, 82, 204);
+            }
+          }
+          
+          &:hover, &.selected {
+            background: #eaecf0;
+          }
+        }
+      }
+    }
+  
+    @media (max-width: $media-width) {  
+      opacity: 0;
+      visibility: hidden;  
+    }
+  }
+  
+  @media (max-width: $media-width) {
+    &.nav-open {
+      @keyframes slide {
+        100% { opacity: 1; }
+      }
+    
+      nav {
+        visibility: visible;
+        animation: slide .1s ease-in forwards;
+      }
+    
+      header {
+        label, label svg {
+          opacity: 0;
+        }
+      }
+    }
+  }
+  
+  @media (max-width: $media-width) {   
+    .hide-mobile {
+      display: none;
+    }
+  }
+    
+  header {
+    transition: padding .1s ease-out;
+    background: #fff;
+    padding: 0;
+    text-align: left;
+    color: #42526e;
+    font-size: 20px;
+    position: relative;
+    height: 80px;
+    
+    @keyframes fade-label-in {
+      0% {
+        opacity: 0;
+        transform: translateY(-50%) scale(0.75);
+      }
+      30% {
+        opacity: 0;
+        transform: translateY(-50%) scale(0.75);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(-50%);
+      }
+    }
+
+    @keyframes fade-label-out {
+      0% {
+        opacity: 1;
+        transform: translateY(-50%);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-50%) translateX(60%);
+      }
+    }
+
+    label {
+      position: relative;
+      user-select: none;
+      padding-left: 22px;
+      position: absolute;
+      left: 46px;
+      top: 50%;
+      animation: fade-label-in .3s ease-in forwards;
+      animation-direction: left;
+                
+      &:not(:first-child) {
+        animation: fade-label-out .2s ease-out forwards;
+      }
+  
+      svg {
+        right: auto;
+        left: 0;
+        width: 28px;
+        height: 28px;
+      }
+    }
+    
+    @media (max-width: $media-width) { 
+      background: #f4f5f7;
+      padding: 20px 20px;
+      padding-left: 34px;
+      height: 48px;
+      margin-bottom: 15px;
+
+      label {
+        font-size: 14px;
+        padding-left: 20px;
+        left: 44px;
+
+        svg {
+          height: 23px;
+          width: 23px;
+        }
+      }
+    }
+  }
+  
+  .nav-toggle {
+    background: #f4f5f7;
+    display: none;
+    position: fixed;
+    top: 6px;
+    right: 20px;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 100%;
+    width: 34px; 
+    height: 34px;
+    transition: background-color .2s ease-out;
+    @media (max-width: $media-width) {
+      display: block;
+    }
+  
+    &:hover {
+      background: rgba(66, 82, 110, 0.1);
+    }
+  }
+  
+  @media (min-width: $media-width) {
+    &.collapsed {
+      .content {
+        left: 64px;
+      }
+
+      nav.vertical.sub {
+        left: -200px;
+      }
+    }
+  }
+  
+  .content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    top: 0;
+    left: 320px;
+    transition: .2s ease-out;
+  
+    @media (max-width: $media-width) {
+      left: 0;
+      display: block;
+    }  
+  }
+}
